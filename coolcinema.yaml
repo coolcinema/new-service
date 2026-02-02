@@ -1,0 +1,9 @@
+version: 1.0.0
+metadata:
+  name: IdentityService
+  slug: identity-service
+
+grpc:
+  main:
+    files: [src/contracts/grpc/identity.proto]
+    port: 5000
