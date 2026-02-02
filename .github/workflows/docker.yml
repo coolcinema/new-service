@@ -1,4 +1,4 @@
-name: Build & Deploy
+tname: Build & Deploy
 
 on:
   push:
