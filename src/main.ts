@@ -1,12 +1,14 @@
 import { Registry } from '@coolcinema/contracts';
 import { createServer } from 'nice-grpc';
+import { NewServiceDefinition } from './_gen/grpc/grpc/new';
+import { IdentityServiceImpl, NewServiceImpl } from './new.service';
 // import { reflectionService } from 'nice-grpc-server-reflection';
-import { IdentityServiceDefinition } from './_gen/grpc/grpc/identity';
-import { IdentityServiceImpl } from './identity.service';
+// import { IdentityServiceDefinition } from './_gen/grpc/grpc/identity';
+// import { IdentityServiceImpl } from './identity.service';
 
 async function main() {
   const server = createServer();
-  server.add(IdentityServiceDefinition, new IdentityServiceImpl());
+  server.add(NewServiceDefinition, new NewServiceImpl());
   // server.add(reflectionService);
 
   const serviceDef = Registry.services['identity'];

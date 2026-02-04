@@ -1,11 +1,11 @@
 import { ServerError, Status } from 'nice-grpc';
 import {
-  IdentityServiceImplementation,
+  NewServiceImplementation,
   GetUserRequest,
   GetUserResponse,
-} from './_gen/grpc/grpc/identity';
+} from './_gen/grpc/grpc/new';
 
-export class IdentityServiceImpl implements IdentityServiceImplementation {
+export class NewServiceImpl implements NewServiceImplementation {
   async getUser(request: GetUserRequest): Promise<GetUserResponse> {
     console.log(`[Identity] GetUser called for: ${request.id}`);
 
