@@ -2,40 +2,40 @@
 // versions:
 //   protoc-gen-ts_proto  v2.11.1
 //   protoc               unknown
-// source: grpc/identity.proto
+// source: booking-service_grpc_booking.proto
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import type { CallContext, CallOptions } from "nice-grpc-common";
 
-export const protobufPackage = "coolcinema.identity.rpc";
+export const protobufPackage = "coolcinema.booking.rpc";
 
-export interface GetUserRequest {
+export interface GetBookingRequest {
   id: string;
 }
 
-export interface GetUserResponse {
+export interface GetBookingResponse {
   id: string;
   email: string;
   isActive: boolean;
 }
 
-function createBaseGetUserRequest(): GetUserRequest {
+function createBaseGetBookingRequest(): GetBookingRequest {
   return { id: "" };
 }
 
-export const GetUserRequest: MessageFns<GetUserRequest> = {
-  encode(message: GetUserRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const GetBookingRequest: MessageFns<GetBookingRequest> = {
+  encode(message: GetBookingRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): GetUserRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): GetBookingRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetUserRequest();
+    const message = createBaseGetBookingRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -56,11 +56,11 @@ export const GetUserRequest: MessageFns<GetUserRequest> = {
     return message;
   },
 
-  fromJSON(object: any): GetUserRequest {
+  fromJSON(object: any): GetBookingRequest {
     return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
-  toJSON(message: GetUserRequest): unknown {
+  toJSON(message: GetBookingRequest): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -68,22 +68,22 @@ export const GetUserRequest: MessageFns<GetUserRequest> = {
     return obj;
   },
 
-  create(base?: DeepPartial<GetUserRequest>): GetUserRequest {
-    return GetUserRequest.fromPartial(base ?? {});
+  create(base?: DeepPartial<GetBookingRequest>): GetBookingRequest {
+    return GetBookingRequest.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<GetUserRequest>): GetUserRequest {
-    const message = createBaseGetUserRequest();
+  fromPartial(object: DeepPartial<GetBookingRequest>): GetBookingRequest {
+    const message = createBaseGetBookingRequest();
     message.id = object.id ?? "";
     return message;
   },
 };
 
-function createBaseGetUserResponse(): GetUserResponse {
+function createBaseGetBookingResponse(): GetBookingResponse {
   return { id: "", email: "", isActive: false };
 }
 
-export const GetUserResponse: MessageFns<GetUserResponse> = {
-  encode(message: GetUserResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const GetBookingResponse: MessageFns<GetBookingResponse> = {
+  encode(message: GetBookingResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -96,10 +96,10 @@ export const GetUserResponse: MessageFns<GetUserResponse> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): GetUserResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): GetBookingResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     const end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetUserResponse();
+    const message = createBaseGetBookingResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -136,7 +136,7 @@ export const GetUserResponse: MessageFns<GetUserResponse> = {
     return message;
   },
 
-  fromJSON(object: any): GetUserResponse {
+  fromJSON(object: any): GetBookingResponse {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       email: isSet(object.email) ? globalThis.String(object.email) : "",
@@ -148,7 +148,7 @@ export const GetUserResponse: MessageFns<GetUserResponse> = {
     };
   },
 
-  toJSON(message: GetUserResponse): unknown {
+  toJSON(message: GetBookingResponse): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -162,11 +162,11 @@ export const GetUserResponse: MessageFns<GetUserResponse> = {
     return obj;
   },
 
-  create(base?: DeepPartial<GetUserResponse>): GetUserResponse {
-    return GetUserResponse.fromPartial(base ?? {});
+  create(base?: DeepPartial<GetBookingResponse>): GetBookingResponse {
+    return GetBookingResponse.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<GetUserResponse>): GetUserResponse {
-    const message = createBaseGetUserResponse();
+  fromPartial(object: DeepPartial<GetBookingResponse>): GetBookingResponse {
+    const message = createBaseGetBookingResponse();
     message.id = object.id ?? "";
     message.email = object.email ?? "";
     message.isActive = object.isActive ?? false;
@@ -174,28 +174,28 @@ export const GetUserResponse: MessageFns<GetUserResponse> = {
   },
 };
 
-export type IdentityServiceDefinition = typeof IdentityServiceDefinition;
-export const IdentityServiceDefinition = {
-  name: "IdentityService",
-  fullName: "coolcinema.identity.rpc.IdentityService",
+export type BookingServiceDefinition = typeof BookingServiceDefinition;
+export const BookingServiceDefinition = {
+  name: "BookingService",
+  fullName: "coolcinema.booking.rpc.BookingService",
   methods: {
     getUser: {
       name: "GetUser",
-      requestType: GetUserRequest,
+      requestType: GetBookingRequest,
       requestStream: false,
-      responseType: GetUserResponse,
+      responseType: GetBookingResponse,
       responseStream: false,
       options: {},
     },
   },
 } as const;
 
-export interface IdentityServiceImplementation<CallContextExt = {}> {
-  getUser(request: GetUserRequest, context: CallContext & CallContextExt): Promise<DeepPartial<GetUserResponse>>;
+export interface BookingServiceImplementation<CallContextExt = {}> {
+  getUser(request: GetBookingRequest, context: CallContext & CallContextExt): Promise<DeepPartial<GetBookingResponse>>;
 }
 
-export interface IdentityServiceClient<CallOptionsExt = {}> {
-  getUser(request: DeepPartial<GetUserRequest>, options?: CallOptions & CallOptionsExt): Promise<GetUserResponse>;
+export interface BookingServiceClient<CallOptionsExt = {}> {
+  getUser(request: DeepPartial<GetBookingRequest>, options?: CallOptions & CallOptionsExt): Promise<GetBookingResponse>;
 }
 
 type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
